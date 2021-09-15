@@ -78,7 +78,7 @@ def gather_nvme_smart_log(nvme_smart_gauge, nvme_list_json):
         else:
             nvme_smart_gauge['critical_warning'].labels(device=nvme['DevicePath'], devno=devno, critical_warning='persistent_memory_read_only').set(0)
 
-        nvme_smart_gauge['temperature'].labels(device=nvme['DevicePath'], devno=devno).set(smart_json['temperature'])
+        nvme_smart_gauge['temperature'].labels(device=nvme['DevicePath'], devno=devno).set(smart_json['temperature']-273)
         nvme_smart_gauge['avail_spare'].labels(device=nvme['DevicePath'], devno=devno).set(smart_json['avail_spare'])
         nvme_smart_gauge['spare_thresh'].labels(device=nvme['DevicePath'], devno=devno).set(smart_json['spare_thresh'])
         nvme_smart_gauge['percent_used'].labels(device=nvme['DevicePath'], devno=devno).set(smart_json['percent_used'])
