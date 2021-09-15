@@ -3,47 +3,17 @@
 
 nvme_exporter is written based on the python prometheus client ([https://github.com/prometheus/client_python](https://github.com/prometheus/client_python)) and the NVMe CLI tool ([https://github.com/linux-nvme/nvme-cli](https://github.com/linux-nvme/nvme-cli)).
 
-## Dependencies
-- `python3.6`
-- `nvme-cli` 
-- `python prometheous-client`
 
-## Installation 
+## docker-compose (for example)
 ```
-git clone git@github.com:yongseokoh/nvme_exporter.git
-cd nvme_exporter
-
-# Install prometheus-client
-pip install requirements.txt
-
-# Install nvme-cli tool
-git submodule init
-git submodule update
-cd nvme-cli
-make
-make install
+...
+  nvme-exporter:
+    image: ghcr.io/tischi86/nvme_exporter:latest
+    privileged: true
+    restart: unless-stopped
+    ports:
+      - "9900:9900"
 ```
-
-### Usage
-```
-usage: nvme_exporter.py [-h] [-p PORT] [-u UPDATE] [-s SIMULATION]
-
-NVME Export port number and update period time
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -p PORT, --port PORT  Port to listen
-  -u UPDATE, --update UPDATE
-                        export mertic update period in seconds
-  -s SIMULATION, --simulation SIMULATION
-                        making use of NVMe simulation
-```
-
-### Example
-```
-sudo python nvme_exporter.py -p 9900 -u 10
-```
-
 ## Grafana Sample
 <img src="https://github.com/yongseokoh/nvme_exporter/blob/dev-0.1/sample/grafana_nvme_export.png?raw=true" target="_blank" width="800">
 
