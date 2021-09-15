@@ -14,7 +14,7 @@ on:
   pull_request:
 
 env:
-  IMAGE_NAME: nvme-exporter-exporter
+  IMAGE_NAME: nvme_exporter
 
 jobs:
   push:
