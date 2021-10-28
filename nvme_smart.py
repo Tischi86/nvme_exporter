@@ -45,7 +45,7 @@ def get_smart_log(device_path):
 	#print(type(json_data))
 	#print(json_data)
 
-    print_smart_log(json_data)
+    #print_smart_log(json_data)
 
     return json_data
 
